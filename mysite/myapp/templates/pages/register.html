@@ -1,0 +1,64 @@
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        
+    }
+    .formfield {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+    }
+    .title {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+    
+    }
+    .btn {
+        border-radius: 10px !important;
+        margin-top: 5px !important;
+        background-color: #abc9d6;
+        padding: 5px 5px 5px 5px !important;
+    }
+
+</style>
+
+<h2 class="title">Register</h2>
+
+<form method="POST" action="">
+    {% csrf_token %} 
+    <div class="formfield">
+        {{form.username}}
+        <br>
+        {{form.password1}}
+        <br>
+        {{form.password2}}
+        <br>
+        <input class="btn" type="submit" name="Create User"/>
+        <br>
+        <p>Already have an account? <a href="{% url 'login'%}">Log in</a></p>
+    </div>
+</form>
+
+<script>
+ 
+//Query All input fields
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username..';
+    form_fields[2].placeholder='Enter password...';
+    form_fields[3].placeholder='Re-enter Password...';
+
+
+    for (var field in form_fields){	
+    form_fields[field].className += ' form-control'
+    }
+</script>

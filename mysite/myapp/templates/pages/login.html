@@ -1,0 +1,51 @@
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        
+    }
+    .formfield {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+
+    }
+    .title {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+    
+    }
+    .btn {
+        border-radius: 10px !important;
+        margin-top: 5px !important;
+        background-color: #abc9d6;
+        padding: 5px 5px 5px 5px !important;
+    }
+
+</style>
+
+<h2 class="title">Login</h2>
+
+<form method="POST" action="">
+    {% csrf_token %} 
+    <div class="formfield">
+    <form method="POST" action="">
+        <input type="text" name="username" placeholder="Username..." >
+        <br>
+        <input type="password" name="password" placeholder="Password...">
+        <br>
+        <input class="btn" type="submit" name="Login"/>
+        <br>
+        <p>Don't have an account? <a href="{% url 'register'%}">Sign up</a></p>
+    </form>
+    </div>
+</form>
