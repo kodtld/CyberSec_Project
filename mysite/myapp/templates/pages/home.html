@@ -1,2 +1,89 @@
-<span>Hello,</span>
-<span><a href="{% url 'logout' %}">Logout</a></span>
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        
+    }
+    .formfield {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+
+    }
+    .title {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+    
+    }
+    .btn {
+        border-radius: 10px !important;
+        margin-top: 5px !important;
+        background-color: #abc9d6;
+        padding: 5px 5px 5px 5px !important;
+    }
+
+    .table{
+        background-color: #8a6783 !important;
+        font-size: large !important;
+    }
+
+    .intable{
+        background-color: #c4a0bd !important;
+        
+    }
+
+    .th{
+        padding: 5 !important;
+        background-color: #b485ab !important;
+    }
+
+    .td{
+        padding: 5 !important;
+    }
+
+    .ab{
+        padding: 5 !important;
+        border: 2 !important;
+        color: black !important;
+        margin-top: 2 !important;
+        margin-bottom: 2 !important;
+    }
+
+</style>
+<div class="formfield">
+    <h2>Hello, {{request.user}}</h2> 
+    <h3>Your titles:</h3>
+    <table class="table">
+        <tr>
+            <th class="th">Title</th>
+            <th class="th">Date published</th>
+            <th class="th">Platform</th>
+            <th class="th">Completion</th>
+            <th class="th">Update</th>
+            <th class="th">Delete</th>
+        </tr>
+        {% for i in games %}
+            <tr class="intable">
+                <td class="td">{{i.title}}</td>
+                <td class="td">{{i.pub_date}}</td>
+                <td class="td">{{i.platform}}</td>
+                <td class="td">{{i.completion}}</td>
+                <td class="ab"><a href="{% url 'update_game' i.id %}">Update</a></td>
+                <td class="ab"><a href="{% url 'delete_game' i.id %}">Delete</a></td>
+            </tr>   
+        {% endfor %}
+    </table>
+    <br>
+    <span><a href="{% url 'create_game' %}">Create new entry</a></span>
+    <br>
+    <span><a href="{% url 'logout' %}">Logout</a></span>
+</div>

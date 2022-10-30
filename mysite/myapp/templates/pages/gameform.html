@@ -1,0 +1,56 @@
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        
+    }
+    .formfield {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+
+    }
+    .title {
+        padding: 15px 15px 15px 15px !important;
+        margin: 15px 15px 15px 15px !important;
+        background: #c4a0bd !important;
+        width: 40rem !important;
+        border-radius: 10px !important ; 
+        font-family: Arial, Helvetica, sans-serif !important ;
+    
+    }
+    .btn {
+        border-radius: 10px !important;
+        margin-top: 5px !important;
+        background-color: #abc9d6;
+        padding: 5px 5px 5px 5px !important;
+    }
+
+    .table{
+        background-color: #8a6783;
+        font-size: large;
+    }
+</style>
+
+<form class="formfield" action="" method="POST">
+    {% csrf_token %}
+    {{form.title.label}}
+    {{form.title}}
+    <br>
+    {{form.pub_date.label}}
+    {{form.pub_date}}
+    <br>
+    {{form.platform.label}}
+    {{form.platform}}
+    <br>
+    {{form.completion.label}}
+    {{form.completion}}
+    <br>
+    <a href="{% url 'home'%}">Cancel</a>
+    <input type="submit" name="Submit">
+</form>
