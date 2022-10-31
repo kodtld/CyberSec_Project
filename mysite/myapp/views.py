@@ -3,12 +3,17 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from .forms import GameForm
-
-from django.db import connections
-
 from django.contrib.auth import authenticate, login, logout
 
-# Create your views here.
+# The developer has tested different approaches and has left the unused installs and imports in the project.
+from django.db import connections
+from sql import *
+import mediapipe as mp
+
+#from django.contrib.auth.decorators import login_required <---- This line,
+#  and commmented @login_required lines are a fix for broken acces control.
+
+#@ login_required(login_url='login')
 def index(request):
     context = {}
     games = Game.objects.all()
@@ -26,6 +31,7 @@ def loginPage(request):
     context = {}
     return render(request,'pages/login.html',context)
 
+#@ login_required(login_url='login')
 def logoutUser(request):
     logout(request)
     return redirect('login')
@@ -42,17 +48,18 @@ def registerPage(request):
     context = {'form':form}
     return render (request,'pages/register.html',context)
 
+#@ login_required(login_url='login')
 def createGame(request):
     form = GameForm()
     if request.method == 'POST':
         form = GameForm(request.POST)
-        print(request.POST['title'])
         if form.is_valid():
             form.save()
             return redirect('home')
     context = {'form':form}
     return render(request, 'pages/gameform.html',context)
 
+#@ login_required(login_url='login')
 def updateGame(request, pk):
     game = Game.objects.get(id=pk)
     form = GameForm(instance=game)
@@ -64,6 +71,7 @@ def updateGame(request, pk):
     context = {'form':form}
     return render(request, 'pages/gameform.html',context)
 
+#@ login_required(login_url='login')
 def deleteGame(request,pk):
     game = Game.objects.get(id=pk)
     if request.method == "POST":

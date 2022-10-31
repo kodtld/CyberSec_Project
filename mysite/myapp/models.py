@@ -2,6 +2,7 @@ from email.policy import default
 from platform import platform
 from random import choices
 from django.db import models
+from sqlalchemy import null
 
 # Create your models here.
 
@@ -10,3 +11,4 @@ class Game(models.Model):
     pub_date = models.DateField('date published',default="YYYY-MM-DD")
     platform = models.CharField(max_length=50,default="eg. Playstation")
     completion = models.CharField(max_length=50,default='0%')
+    media = models.ImageField(null=True)

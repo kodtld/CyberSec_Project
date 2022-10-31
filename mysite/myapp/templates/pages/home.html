@@ -61,13 +61,14 @@
 </style>
 <div class="formfield">
     <h2>Hello, {{request.user}}</h2> 
-    <h3>Your titles:</h3>
+    <h3>Your game library:</h3>
     <table class="table">
         <tr>
             <th class="th">Title</th>
             <th class="th">Date published</th>
             <th class="th">Platform</th>
             <th class="th">Completion</th>
+            <th class="th">Media</th>
             <th class="th">Update</th>
             <th class="th">Delete</th>
         </tr>
@@ -77,6 +78,7 @@
                 <td class="td">{{i.pub_date}}</td>
                 <td class="td">{{i.platform}}</td>
                 <td class="td">{{i.completion}}</td>
+                <td class="td"><img src="{{i.media.url}}" width="100%"></td>
                 <td class="ab"><a href="{% url 'update_game' i.id %}">Update</a></td>
                 <td class="ab"><a href="{% url 'delete_game' i.id %}">Delete</a></td>
             </tr>   
