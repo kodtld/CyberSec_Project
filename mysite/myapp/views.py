@@ -7,7 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 
 # The developer has tested different approaches and has left the unused installs and imports in the project.
 from django.db import connections
-from sql import *
 import mediapipe as mp
 
 #from django.contrib.auth.decorators import login_required <---- This line,
